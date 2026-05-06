@@ -1,0 +1,102 @@
+ROTEIRO VÍDEO PITCH — SPRINT 1 (5 MINUTOS)
+
+00:00 – 00:20
+
+Furin:
+"Olá, nós somos Furin, Renan, Lucas, Gabriel e Het, alunos de Ciência da Computação da FIAP."
+
+Renan:
+"Hoje vamos apresentar uma solução sustentável para otimizar o consumo energético em eletropostos."
+
+
+00:20 – 01:00
+
+Lucas:
+"Atualmente, muitos eletropostos utilizam softwares de alto nível, como Python, rodando em hardware genérico."
+
+Gabriel:
+"Isso gera alto consumo de energia computacional em tarefas simples, como leitura de sensores e controle de carga."
+
+Het:
+"Essas operações são repetidas milhares de vezes por dia, causando desperdício de recursos."
+
+Furin:
+"Além disso, essa ineficiência dificulta o uso de fontes renováveis de baixa potência."
+
+
+01:00 – 02:00
+
+Renan:
+"Nossa proposta é desenvolver um módulo de controle otimizado em Assembly RISC-V."
+
+Lucas:
+"Diferente do Python, o Assembly executa instruções diretamente no processador."
+
+Gabriel:
+"Isso reduz drasticamente a quantidade de ciclos de CPU necessários."
+
+Het:
+"Menos ciclos significam menor consumo de energia e maior eficiência."
+
+Furin:
+"O RISC-V foi escolhido por sua arquitetura simples e eficiente."
+
+
+02:00 – 03:30
+
+Renan:
+"Aqui temos um exemplo de soma acumulada de 1 até N."
+
+Lucas:
+"Em Python, essa operação passa por interpretação de bytecode e execução na máquina virtual."
+
+Gabriel:
+"Já em Assembly, usamos instruções diretas como ADD e ADDI."
+
+Het:
+"Isso permite maior controle e eficiência."
+
+Furin:
+"Nos testes, para N igual a 10, o Python consumiu cerca de 29.500 ciclos."
+
+Renan:
+"Enquanto o Assembly utilizou apenas 39 ciclos, uma redução de 99,87%."
+
+Lucas:
+"Mesmo com N igual a 1000, a redução continua acima de 94%."
+
+
+03:30 – 04:30
+
+Gabriel:
+"A redução de ciclos impacta diretamente o consumo energético."
+
+Het:
+"Em um cenário real, a economia pode chegar a cerca de 94,5 kWh por ano."
+
+Furin:
+"Isso também reduz aproximadamente 47 kg de CO₂ emitidos."
+
+Renan:
+"Sistemas mais eficientes facilitam o uso de energia renovável."
+
+Lucas:
+"Ou seja, melhoramos desempenho e sustentabilidade ao mesmo tempo."
+
+
+04:30 – 05:00
+
+Gabriel:
+"A otimização em baixo nível pode gerar impacto real no consumo energético."
+
+Het:
+"A escolha da arquitetura influencia diretamente na eficiência."
+
+Furin:
+"Pequenas melhorias, em larga escala, geram grandes resultados."
+
+Renan:
+"Essa é a importância da arquitetura de computadores na sustentabilidade."
+
+Lucas:
+"Obrigado!"

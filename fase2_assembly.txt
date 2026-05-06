@@ -1,0 +1,26 @@
+# =============================================================
+# Sprint 1 — Fase 2 | Soma Acumulada em RISC-V
+# Defina a0 com o valor de N antes de rodar
+# =============================================================
+
+.globl main
+.text
+
+main:
+    # DEFINA a0 AQUI OU NOS REGISTERS
+    addi a0, zero, 10      # Teste com N=10 primeiro
+    jal ra, soma_acumulada
+    beq zero, zero, main   # Loop infinito (fim)
+
+soma_acumulada:
+    addi a1, zero, 0       # a1 = total = 0
+    addi a2, zero, 1       # a2 = i = 1
+
+loop_start:
+    bgt a2, a0, loop_end   # if (i > N) sai
+    add a1, a1, a2         # total += i
+    addi a2, a2, 1         # i++
+    jal zero, loop_start   # volta ao inicio do loop
+
+loop_end:
+    jr ra                  # retorna

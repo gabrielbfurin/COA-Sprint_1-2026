@@ -1,0 +1,123 @@
+RISC vs CISC — Fase 1
+
+SPRINT 1 — FASE 1 // ARQUITETURA DE COMPUTADORES
+
+RISC VS CISC
+
+// Reduced Instruction Set Computer | Complex Instruction Set Computer
+
+RISC e CISC são as duas grandes filosofias de projeto de conjuntos de instruções (ISA — Instruction Set Architecture) que definem como um processador interpreta e executa comandos. A escolha entre elas impacta diretamente o desempenho, consumo de energia, complexidade de hardware e eficiência de compiladores.
+
+--------------------------------------------------
+
+01 — DEFINIÇÕES
+
+O que é cada arquitetura?
+
+RISC (Reduced Instruction Set Computer)
+Criada nos anos 1980 por pesquisadores de Berkeley e Stanford, a filosofia RISC defende um conjunto pequeno e simples de instruções.
+
+Características:
+- Cada instrução executada em um ciclo de clock
+- Instruções de tamanho fixo (geralmente 32 bits)
+- Arquitetura load/store (operações apenas em registradores)
+- Poucos modos de endereçamento
+- Controle simples em hardware (sem microcódigo)
+- Pipeline eficiente
+- Muitos registradores
+
+CISC (Complex Instruction Set Computer)
+Dominante antes dos anos 1980, busca reduzir o número de instruções por programa com comandos mais complexos.
+
+Características:
+- Instruções de tamanho variável (1 a 15+ bytes)
+- Operações podem acessar memória diretamente
+- Muitos modos de endereçamento
+- Uso de microcódigo
+- Instruções levam múltiplos ciclos
+- Menor número de instruções por programa
+
+--------------------------------------------------
+
+02 — COMPARAÇÃO TÉCNICA
+
+CRITÉRIO                    | RISC                         | CISC
+---------------------------|------------------------------|------------------------------
+Número de instruções       | Reduzido (~dezenas a 200)    | Extenso (centenas a milhares)
+Tamanho das instruções     | Fixo (~32 bits)              | Variável (1 a 15+ bytes)
+Ciclos por instrução (CPI) | ~1 ciclo                     | 1 a 20+ ciclos
+Acesso à memória           | Apenas LOAD/STORE            | Várias instruções acessam memória
+Microcódigo                | Não utiliza                  | Utiliza extensivamente
+Registradores              | Muitos (ex: ARM ~32)         | Poucos (ex: x86 clássico ~8)
+Pipeline                   | Eficiente e profundo         | Mais difícil de implementar
+Complexidade hardware      | Menor                        | Maior (decodificação complexa)
+Complexidade compilador    | Maior                        | Menor
+Código de máquina          | Mais instruções              | Menos instruções
+Consumo energético         | Menor                        | Maior
+Frequência de clock        | Maior potencial              | Limitada pela complexidade
+Compatibilidade legada     | Baixa                        | Alta (ex: x86 desde 1978)
+
+--------------------------------------------------
+
+03 — EXEMPLOS REAIS
+
+Arquitetura RISC:
+- ARM Cortex-A
+- Apple M1 / M2 / M3 / M4
+- RISC-V
+- MIPS
+- PowerPC
+- Snapdragon (Qualcomm)
+- SPARC
+
+Arquitetura CISC:
+- Intel Core i3/i5/i7/i9
+- AMD Ryzen / EPYC
+- Intel Xeon
+- x86 / x86-64
+- Intel 8086
+- VAX
+- Motorola 68000
+- IBM System/360
+
+--------------------------------------------------
+
+04 — IMPACTO ENERGÉTICO
+
+RISC — Eficiência:
+- Instruções simples consomem menos energia
+- Pipeline reduz desperdício de ciclos
+- Ideal para mobile, IoT e servidores densos
+
+CISC — Throughput:
+- Código mais compacto
+- Decodificação consome mais energia
+- CPUs modernas convertem para micro-ops tipo RISC
+
+Convergência Moderna:
+- Intel/AMD traduzem CISC → micro-ops RISC
+- ARM compete com x86 em desktops (Apple Silicon)
+- Diferença entre arquiteturas está diminuindo
+
+--------------------------------------------------
+
+05 — ANÁLISE CRÍTICA
+
+Conclusão:
+Não existe arquitetura melhor universalmente.
+
+- RISC domina mobile (eficiência energética)
+- CISC domina desktops/servidores (compatibilidade x86)
+
+Tendência:
+- Convergência entre RISC e CISC
+- CISC moderno usa micro-ops RISC internamente
+- RISC moderno (Apple Silicon) alcança alto desempenho
+
+Hoje, o debate RISC vs CISC é mais relevante no nível de projeto de ISA e compiladores do que no hardware em si.
+
+--------------------------------------------------
+
+FASE 1 — Sprint 1
+Arquitetura de Computadores
+Entrega: 09/05

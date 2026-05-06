@@ -1,0 +1,58 @@
+Pesquisa da Sprint 1 - Projeto Sustentável em Arquitetura de Computadores
+
+Relação entre ciclos de CPU e consumo energético:
+
+A relação entre os ciclos de CPU (ou clock cycles) e o gasto de energia é direta, ou seja, quanta mais ciclos de CPU, mais energia será consumida. Cada ciclo de CPU envolve transistores ligando/desligando, o que gera o consumo de energia. Para entender melhor, vamos analisar a fórmula simplificada do consumo dinâmico: P = C . V**2 . f
+Onde:
+- P = potência (energia por segundo);
+- C = capacitância do processador;
+- V = voltagem;
+- f = frequência (ciclos por segundo).
+
+Resumindo, caso a frequência aumente o processador irá executar as instruções mais rápido, o que vai consumir mais energia por segundo. Se a voltagem aumentar, o impacto será ainda maior, pelo fato de ser ao quadrado. E caso o processador tenha que executar um grande número de instruções, mesmo com a frequência baixa, ele vai rodar mais tempo e consequentemente gastará mais energia.
+
+Ciclos de CPU por instrução (Python - Alto nível VS Assembly - Baixo nível):
+
+No caso de linguagens interpretadas, como o Python, uma única instrução equivale a várias instruções de máquina, no caso de uma linguagem de baixo nível. Isso ocorre porque cada comando do Python, quando executado, é compilado para bytecode pelo compilador, depois cada uma das instruções compiladas é convertida pela Máquina Virtual do Python (PVM) e só depois é traduzida pelo interpretador e cada bytecode é transformado em instrução de máquina, sendo essas instruções executadas pela CPU.
+
+Devido à essa camada da Máquina Virtual, o Python precisa de muito mais ciclos de CPU que outras linguagens, como por exemplo o Assembly. Para melhor entendimento, vamos usar o seguinte código, em Python:
+if battery < 50:
+    action = "reduce"
+
+Para acessar à variável battery, o Python usará cerca de 10 ciclos de CPU.
+Para realizar a comparação (<50), o Python usará cerca de 5 ciclos de CPU.
+Para fazer a atribuição (=), o Python usará cerca de 10 ciclos de CPU.
+Sendo assim, o total de ciclos para esse pequeno código será cerca de 25 ciclos.
+
+Agora transformando esse código em Assembly (RISC-V):
+addi t0, zero, 50      # Carrega 50 em registrador: 1 ciclo
+blt a0, t0, reduce     # Compara a0 < 50 e pula: 1 ciclo
+# Total: 2 ciclos
+
+Ou seja, cada bytecode Python, que é interpretado pela Máquina Virtual, múltiplas instruções de máquina serão geradas para cada operação lógica. No caso de criação de uma lista em Python, cerca de 500 a 2000 ciclos serão executados, visto que:
+- Alocação de memória heap (~100 ciclos);
+- Criação de objeto list com metadata (~50 ciclos);
+- Alocação de 5 objetos inteiros Python (~200 ciclos, pois cada int é um objeto);
+- Linking de referências (~50-100 ciclos);
+- Potencial garbage collection trigger (~100+ ciclos).
+
+O que gastará uma grande quantidade de energia.
+
+Em resumo, uma instrução lógica em Python equivale de 5 a 25 instruções de máquina. Isso significa que em operações críticas, como o controle de carga em eletropostos, o consumo de energia será entre 10 a 25 vezes maior.
+
+Pipeline em RISC e sua influência nos ciclos de CPU:
+
+O pipeline altera a forma como os ciclos são usadas, mas não o ciclo em si. Sem pipeline, cada instrução de código passa por todas as etapas (Fetch, Decode, Execute, Memory, Writeback), onde cada instrução vai usar cerca de 5 ciclos.
+
+Já no RISC-V, várias instruções são processadas em paralelo, cada uma em um estágio diferente, e assim uma instrução é termina por ciclo.
+
+Resumidamente, o pipeline não reduz o número de ciclos do clock, ele reduz os ciclos por instrução, o que reduz os ciclos totais do programa, gasta menos tempo de execução e consequentemente um menor consumo energético (na maioria dos casos).
+
+Relação entre cache e ciclos de CPU:
+
+A relação entre ciclos de clock e cache é sobre o tempo que o processador demora para acessar à memória. Em poucas palavras, o cache reduz a quantidade de ciclos que a CPU perde esperando dados.
+
+Sem o cache, a CPU precisa acessar a RAM em busca dos dados, o que vai gerar um gasto de 100 ciclos ou mais. Já que com o cache (L1, L2, L3) os dados estarão guardados mais próximos da CPU, onde L1 gastará de 1 a 4 ciclos, L2 gastará 10 ciclos e L3 gastará entre 30 e 50 ciclos. Podemos calcular esse tempo médio de acesso com a fórmula: AMAT = Hit Time + Miss Rate⋅ Miss Penalty, onde:
+Hit Time = tempo de acessar o cache;
+Miss Rate = % de falhas;
+Miss Penalty = custo (em ciclos) de ir até a RAM.
