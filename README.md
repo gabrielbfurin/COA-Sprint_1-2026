@@ -7,7 +7,7 @@
 
 ## 1) Objetivo do Projeto
 
-Este projeto demonstra, de forma **técnica e mensurável**, como conceitos de **Arquitetura de Computadores** (RISC vs CISC, pipeline, cache, ciclos de CPU) e **programação em baixo nível (Assembly)** podem reduzir:
+Este projeto demonstra, de forma **técnica e mensurável**, como conceitos de **Arquitetura de Computadores** (RISC vs CISC, pipeline, cache, ciclos de CPU) e **programação em baixo nível (Assembly)** impactam diretamente:
 
 - **ciclos de CPU**
 - **tempo de execução**
@@ -36,7 +36,13 @@ Mesmo para tarefas simples e repetitivas (leitura de sensores, controle de carga
 
 ---
 
-## 3) Proposta de Solução
+## 3) Justificativa
+
+A crescente demanda por eletropostos exige soluções eficientes para minimizar o consumo energético. Softwares de alto nível e hardware genérico geram desperdício computacional, impactando a sustentabilidade. Este projeto se justifica pela necessidade de otimizar operações críticas em baixo nível, demonstrando como a arquitetura de computadores pode reduzir diretamente o consumo de energia e viabilizar melhor o uso de fontes renováveis.
+
+---
+
+## 4) Proposta de Solução
 
 Propor um **módulo de controle crítico** otimizado em **Assembly RISC-V**, visando:
 
@@ -48,9 +54,9 @@ A ideia é manter partes não críticas em alto nível (produtividade), e implem
 
 ---
 
-## 4) Fundamentação Técnica
+## 5) Fundamentação Técnica
 
-### 4.1 Relação entre ciclos de CPU e consumo energético
+### 5.1 Relação entre ciclos de CPU e consumo energético
 
 A relação entre ciclos e energia é direta: **mais ciclos ⇒ mais chaveamento de transistores ⇒ maior consumo**.
 
@@ -65,7 +71,7 @@ Modelo simplificado do consumo dinâmico:
 
 Mesmo com frequência baixa, se um programa executa muitas instruções, ele roda por mais tempo e consome mais energia.
 
-### 4.2 Python (alto nível) vs Assembly (baixo nível)
+### 5.2 Python (alto nível) vs Assembly (baixo nível)
 
 Python (interpretado) executa cada operação através de camadas (bytecode + VM + interpretador), o que aumenta o custo em ciclos por operação.
 
@@ -78,14 +84,14 @@ if battery < 50:
 
 Em Assembly (RISC-V), a mesma lógica pode ser reduzida a poucas instruções.
 
-### 4.3 Pipeline e CPI
+### 5.3 Pipeline e CPI
 
 - Sem pipeline: uma instrução passa por vários estágios sequenciais, aumentando o **CPI** (ciclos por instrução).
 - Com pipeline (comum em RISC): várias instruções são processadas em paralelo por estágio, aproximando o throughput de **1 instrução por ciclo** (em condições ideais).
 
 Resultado prático: **pipeline reduz CPI**, reduz ciclos totais e tende a reduzir tempo/energia.
 
-### 4.4 Cache e ciclos
+### 5.4 Cache e ciclos
 
 Cache reduz ciclos perdidos em acesso à RAM:
 
@@ -100,14 +106,14 @@ Tempo médio de acesso (AMAT):
 
 ---
 
-## 5) Implementação (Fase 2)
+## 6) Implementação (Fase 2)
 
 Para demonstrar a diferença entre alto e baixo nível, foi implementado o mesmo algoritmo em duas versões:
 
 - **Python:** soma acumulada de 1 até N com medição de tempo e estimativas
 - **RISC-V Assembly:** soma acumulada equivalente com loop em instruções diretas
 
-### 5.1 Python (alto nível)
+### 6.1 Python (alto nível)
 
 Arquivo: `fase2_python.py`
 
@@ -115,19 +121,33 @@ Arquivo: `fase2_python.py`
 - estima ciclos: `ciclos = tempo(s) × frequência(Hz)`
 - estima energia: `E = P × t` usando TDP aproximado
 
-### 5.2 Assembly RISC-V (baixo nível)
+### 6.2 Assembly RISC-V (baixo nível)
 
 Arquivo: `fase2_assembly.txt`
 
-Implementa a soma acumulada usando registradores e desvios (`bgt`, `jal`, `jr`).
+Implementa a soma acumulada usando registradores e desvios (`bgt`, `jal`, `jr`). Abaixo, um trecho do código:
+```assembly
+# Trecho do código em fase2_assembly.txt
+soma_acumulada:
+    addi a1, zero, 0       # a1 = total = 0
+    addi a2, zero, 1       # a2 = i = 1
 
+loop_start:
+    bgt a2, a0, loop_end   # if (i > N) sai
+    add a1, a1, a2         # total += i
+    addi a2, a2, 1         # i++
+    jal zero, loop_start   # volta ao inicio do loop
+
+loop_end:
+    jr ra                  # retorna
+```
 ---
 
-## 6) Resultados (Fase 3) — Python vs Assembly
+## 7) Resultados (Fase 3) — Python vs Assembly
 
 Arquivo: `fase3_comparacao-python_vs_assembly.md`
 
-### 6.1 Tabela comparativa
+### 7.1 Tabela comparativa
 
 | N     | Python (ciclos) | Assembly (ciclos) | Redução | Razão |
 |------|----------------|-------------------|---------|-------|
@@ -137,7 +157,7 @@ Arquivo: `fase3_comparacao-python_vs_assembly.md`
 
 **Conclusão:** Assembly reduz ciclos em **94% a 99%**.
 
-### 6.2 Extrapolação (cenário de eletroporto)
+### 7.2 Extrapolação (cenário de eletroporto)
 
 Para operações críticas repetidas em tempo real (ex.: controle/decisão), a redução de ciclos pode gerar economia relevante de energia computacional ao longo do tempo.
 
@@ -149,7 +169,7 @@ No cenário estimado (24/7):
 
 ---
 
-## 7) Sustentabilidade (por que isso importa?)
+## 8) Sustentabilidade (por que isso importa?)
 
 Reduzir custo computacional significa:
 
@@ -161,7 +181,7 @@ Em larga escala (muitos eletropostos e operações frequentes), pequenas otimiza
 
 ---
 
-## 8) Vídeo Pitch
+## 9) Vídeo Pitch
 
 Roteiro: `fase4_roteiro_video.txt`
 
@@ -173,7 +193,7 @@ Roteiro: `fase4_roteiro_video.txt`
 
 ---
 
-## 9) Estrutura do Repositório (Projeto 1)
+## 10) Estrutura do Repositório (Projeto 1)
 
 - `fase1_pipeline_CPU_cache.txt` — pesquisa: ciclos × energia, pipeline e cache
 - `fase1_risc_vc_cisc.txt` — pesquisa: RISC vs CISC
@@ -184,7 +204,7 @@ Roteiro: `fase4_roteiro_video.txt`
 
 ---
 
-## 10) Integrantes
+## 11) Integrantes
 
 | Nome | RM |
 |------|----|
@@ -196,7 +216,7 @@ Roteiro: `fase4_roteiro_video.txt`
 
 ---
 
-## 11) Como executar
+## 12) Como executar
 
 ### Python
 
