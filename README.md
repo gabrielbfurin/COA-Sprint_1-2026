@@ -1,4 +1,4 @@
-# Sprint 1 — Projeto Sustentável em Arquitetura de Computadores (COA)
+# Projeto Sustentável em Arquitetura de Computadores (COA)
 
 > **EV Challenge 2026 — Sprint 1 (COA)**  
 > **Tema:** Sustentabilidade e eficiência computacional em eletropostos por meio de **arquitetura RISC** e **otimização em Assembly (RISC-V)**.
@@ -209,10 +209,3 @@ python fase2_python.py
 Simulador utilizado:
 
 - https://riscv-simulator-five.vercel.app/
-
----
-
-## 12) Referências rápidas (conceitos usados)
-
-- Consumo dinâmico (modelo): \( P = C \cdot V^2 \cdot f \)
-- AMAT (cache): \( AMAT = Hit\ Time + Miss\ Rate \cdot Miss\ Penalty \)
