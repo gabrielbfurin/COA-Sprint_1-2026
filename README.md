@@ -62,7 +62,7 @@ A relação entre ciclos e energia é direta: **mais ciclos ⇒ mais chaveamento
 
 Modelo simplificado do consumo dinâmico:
 
-\[ P = C \cdot V^2 \cdot f \]
+P = C . V^2 . f
 
 - **P**: potência (energia por segundo)
 - **C**: capacitância efetiva
@@ -102,7 +102,7 @@ Cache reduz ciclos perdidos em acesso à RAM:
 
 Tempo médio de acesso (AMAT):
 
-\[ AMAT = Hit\ Time + Miss\ Rate \cdot Miss\ Penalty \]
+AMAT = Hit Time + Miss Rate . Miss Penalty
 
 ---
 
