@@ -184,19 +184,7 @@ Em larga escala (muitos eletropostos e operações frequentes), pequenas otimiza
 
 ---
 
-## 9) Vídeo Pitch
-
-Roteiro: `fase4_roteiro_video.txt`
-
-**Link do vídeo (YouTube não listado):**
-
-> **COLE O LINK AQUI (quando estiver gravado)**
-
-> Observação: o vídeo deve ter protagonismo dos integrantes (sem narração por IA).
-
----
-
-## 10) Estrutura do Repositório (Projeto 1)
+## 9) Estrutura do Repositório (Projeto 1)
 
 - `fase1_pipeline_CPU_cache.txt` — pesquisa: ciclos × energia, pipeline e cache
 - `fase1_risc_vc_cisc.txt` — pesquisa: RISC vs CISC
@@ -207,7 +195,7 @@ Roteiro: `fase4_roteiro_video.txt`
 
 ---
 
-## 11) Integrantes
+## 10) Integrantes
 
 | Nome | RM |
 |------|----|
@@ -219,7 +207,7 @@ Roteiro: `fase4_roteiro_video.txt`
 
 ---
 
-## 12) Como executar
+## 11) Como executar
 
 ### Python
 
