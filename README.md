@@ -1,7 +1,10 @@
 # Projeto Sustentável em Arquitetura de Computadores (COA)
 
-> **EV Challenge 2026 — Sprint 1 (COA)**  
-> **Tema:** Sustentabilidade e eficiência computacional em eletropostos por meio de **arquitetura RISC** e **otimização em Assembly (RISC-V)**.
+> 🎓 **Projeto acadêmico — FIAP**
+>
+> Desenvolvido em equipe durante a **Sprint 1 da disciplina de COA (Arquitetura de Computadores)**, no curso de Ciência da Computação.
+>
+> O projeto explora a relação entre arquitetura computacional, eficiência energética e mobilidade elétrica por meio de uma comparação entre **Python e Assembly RISC-V**. 
 
 ---
 
